@@ -159,7 +159,7 @@ st.markdown(
     """
     <style>
         html, body, [data-testid="stWidgetLabel"] p, .stMarkdown p, p, span, li, label {
-            font-size: 1.3rem !important; font-weight: 700 !important; font-family: system-ui, sans-serif !important;
+            font-size: 1rem !important; font-weight: 700 !important; font-family: system-ui, sans-serif !important;
         }
         .art-title-container {
             background: linear-gradient(135deg, #008080 0%, #004d4d 100%);
