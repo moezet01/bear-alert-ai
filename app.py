@@ -89,7 +89,7 @@ def get_image_similarity(img_path1, img_path2):
 def confirm_delete_dialog(alert_id):
     st.warning(f"Are you sure you want to permanently delete Event #{alert_id}?")
     c1, c2 = st.columns(2)
-    if c1.button("YES, DELETE", use_container_width=True):
+    if c1.button("YES, DELETE", width="stretch"):
         st.session_state["alerts"] = [
             a for a in st.session_state["alerts"] if a["id"] != alert_id
         ]
@@ -103,7 +103,7 @@ def confirm_delete_dialog(alert_id):
                         f"ID: {a['id']} | Time: {a['date']} {a['time']} Lat: {a['latitude']} | Lon: {a['longitude']}\n"
                     )
         st.rerun()
-    if c2.button("CANCEL", use_container_width=True):
+    if c2.button("CANCEL", width="stretch"):
         st.rerun()
 
 
@@ -295,7 +295,7 @@ with tabs[0]:
     if not st.session_state["alerts"]:
         st.write("Upload video...")
     else:
-        for alert in reversed(st.session_state["alerts"]):
+        for i, alert in enumerate(reversed(st.session_state["alerts"])):
             with st.container(border=True):
                 main_cols = st.columns([1.8, 1.2, 0.8])
                 event_folder = os.path.join(IMG_DIR, f"event_{alert['id']}")
@@ -307,13 +307,11 @@ with tabs[0]:
                         st.session_state[idx_key] = 0
 
                     with main_cols[0]:
-                        st.image(
-                            images[st.session_state[idx_key]], use_container_width=False
-                        )
+                        st.image(images[st.session_state[idx_key]], width="content")
 
                         c_prev, c_count, c_next, _ = st.columns([1, 3, 1, 4])
 
-                        if c_prev.button("◁", key=f"prev_{alert['id']}"):
+                        if c_prev.button("◁", key=f"prev_{alert['id']}_{i}"):
                             st.session_state[idx_key] = (
                                 st.session_state[idx_key] - 1
                             ) % len(images)
@@ -332,7 +330,7 @@ with tabs[0]:
                             unsafe_allow_html=True,
                         )
 
-                        if c_next.button("▷", key=f"next_{alert['id']}"):
+                        if c_next.button("▷", key=f"next_{alert['id']}_{i}"):
                             st.session_state[idx_key] = (
                                 st.session_state[idx_key] + 1
                             ) % len(images)
@@ -344,13 +342,13 @@ with tabs[0]:
 
                 with main_cols[2]:
                     if st.button(
-                        "DELETE", key=f"del_{alert['id']}", use_container_width=True
+                        "DELETE", key=f"del_{alert['id']}_{i}", width="stretch"
                     ):
                         confirm_delete_dialog(alert["id"])
                     if st.button(
                         "REIDENTIFY",
-                        key=f"reid_{alert['id']}",
-                        use_container_width=True,
+                        key=f"reid_{alert['id']}_{i}",
+                        width="stretch",
                     ):
                         reid_dialog(alert["id"])
 
