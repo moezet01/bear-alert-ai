@@ -1,4 +1,5 @@
 ultralytics
+numpy==1.26.4
 pandas
 pydeck
 streamlit==1.50.0
