@@ -1,6 +1,5 @@
 ultralytics
 opencv-python-headless==4.13.0.92
-opencv-python==0.0.0
 pandas
 pydeck
 streamlit==1.50.0
