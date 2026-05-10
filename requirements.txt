@@ -3,3 +3,5 @@ opencv-python-headless
 pandas
 pydeck
 streamlit==1.50.0
+loguru
+pytz
