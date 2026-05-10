@@ -1,7 +1,7 @@
 ultralytics
-opencv-python-headless==4.6.0.66
 pandas
 pydeck
 streamlit==1.50.0
 loguru
 pytz
+opencv-python-headless==4.6.0.66
