@@ -16,7 +16,7 @@ from ultralytics import YOLO
 
 # Model weight file
 MODEL_PATH = "weights/model_v2.pt"
-CONF_THRES = 0.75
+CONF_THRES = 0.85
 
 
 @st.cache_resource
