@@ -129,8 +129,8 @@ def reid_dialog(alert_id):
                 if score > highest_score:
                     highest_score, best_match = score, alert
 
-    # Not match if lower than 85%
-    if best_match and highest_score >= 85.0:
+    # Not match if lower than 99%
+    if best_match and highest_score >= 99.6:
         st.success(
             f"Match Found! {highest_score:.1f}% similar to Event {best_match['label']}"
         )
